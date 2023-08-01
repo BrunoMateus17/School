@@ -19,12 +19,9 @@ export class StudencrudComponent {
 	constructor(private http: HttpClient){
 		this.getAllStudent();
 	}
-	// ,{'headers':_httpOptions}
-
 	getAllStudent(){
 	
 		this.http.get("http://localhost:8085/api/student").subscribe((resultData:any)=>{
-			console.log(123)
 			this.isResultLoaded = true;
 			this.StudentArray = resultData.data;
 		})
@@ -70,8 +67,8 @@ export class StudencrudComponent {
 	}
 
 	setDelete(data:any){
-		this.http.delete("http://localhost:8085/api/student/add/"+data.id).subscribe((resultData:any)=>{
-			alert("Registered")
+		this.http.delete("http://localhost:8085/api/student/delete/"+data.id).subscribe((resultData:any)=>{
+			alert("Remove")
 			this.getAllStudent();
 		})
 	}
